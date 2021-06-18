@@ -26,6 +26,13 @@ button{
     border-radius: 50px;
     background: #616161;
     margin-bottom: 5px;
+    border: black;
+    box-shadow: 5px #616161;
+    color: white;
+}
+
+button:hover{
+    transform: scale(1.05)
 }
 #zero{
     height: 65px;
