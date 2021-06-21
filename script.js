@@ -7,6 +7,7 @@ const decimal = document.getElementById('.');
 const equals = document.getElementById('=');
 const minusSign = document.getElementById('-');
 const multiplySign = document.getElementById('x')
+const numberButtons = document.querySelectorAll("[data-number]");
 
 const zero = document.getElementById('zero');
 const one = document.getElementById('one');
@@ -60,17 +61,17 @@ const display = [];
 let displayValue1 = [];
 let displayValue2 = [];
 
-function add(num1, num2) {
-    return num1 + num2;
+function add(a, b) {
+    return a + b;
 }
-function divide(num1, num2) {
-    return num1 / num2;
+function divide(a, b) {
+    return a / b;
 }
-function multiply(num1, num2) {
-    return num1 * num2;
+function multiply(a, b) {
+    return a * b;
 }
-function subtract(num1, num2) {
-    return num1 - num2;
+function subtract(a, b) {
+    return a - b;
 }
 
 AC.addEventListener('click', function () {
@@ -122,86 +123,135 @@ multiplySign.addEventListener('click', function () {
 
 })
 
-zero.addEventListener('click', function () {
-    display.push('0');
-    Number(display.join(''))
-    output.textContent = display.join('');
-    // number1Clicked = 0;
-    // check to see if 1 is clicked. If yes, set it as num 2, if no. set it as no. 1
-    if (number1Clicked == NaN) {
-        number1Clicked = 0;
-    } else {
-        number2Clicked = 0;
-    }
-})
-one.addEventListener('click', function () {
-    display.push('1');
-    Number(display.join(''))
-    output.textContent = display.join('');
-    number1Clicked = 1;
-})
-two.addEventListener('click', function () {
-    display.push('2');
-    Number(display.join(''))
-    output.textContent = display.join('');
-    number1Clicked = 2;
+// zero.addEventListener('click', function () {
+//     display.push('0');
+//     Number(display.join(''))
+//     output.textContent = display.join('');
+//     // number1Clicked = 0;
+//     // check to see if 1 is clicked. If yes, set it as num 2, if no. set it as no. 1
+//     if (number1Clicked == NaN) {
+//         number1Clicked = 0;
+//     } else {
+//         number2Clicked = 0;
+//     }
+// })
+// one.addEventListener('click', function () {
+//     display.push('1');
+//     Number(display.join(''))
+//     output.textContent = display.join('');
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 1;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 1;
+//         console.log(number2Clicked)
+//     }
+// })
+// two.addEventListener('click', function () {
+//     display.push('2');
+//     Number(display.join(''))
+//     output.textContent = display.join('');
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 2;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 2;
+//         console.log(number2Clicked)
+//     }
 
-})
-three.addEventListener('click', function () {
-    display.push('3');
-    display.join('')
-    output.textContent = display.join('');
-    number1Clicked = 3;
-})
-four.addEventListener('click', function () {
-    display.push('4');
-    display.join('')
-    output.textContent = display.join('');
-    if (isNaN(number1Clicked)) {
-        number1Clicked = 4;
-        console.log(number1Clicked)
-    } else {
-        number2Clicked = 4;
-        console.log(number2Clicked)
-    }
-})
-five.addEventListener('click', function () {
-    display.push('5');
-    output.textContent = display.join('');
-    number1Clicked = 5;
-})
-six.addEventListener('click', function () {
-    display.push('6');
-    output.textContent = display.join('');
-    number1Clicked = 6;
-})
-seven.addEventListener('click', function () {
-    display.push('7');
-    output.textContent = display.join('');
-    displayValue1 = Number(display.join(""));
-    if (isNaN(number1Clicked)) {
-        number1Clicked = displayValue1;
-        console.log(number1Clicked)
-    } else {
-        number2Clicked = displayValue2;
-        console.log(number2Clicked)
-    }
+// })
+// three.addEventListener('click', function () {
+//     display.push('3');
+//     display.join('')
+//     output.textContent = display.join('');
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 3;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 3;
+//         console.log(number2Clicked)
+//     }
+// })
+// four.addEventListener('click', function () {
+//     display.push('4');
+//     display.join('')
+//     output.textContent = display.join('');
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 4;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 4;
+//         console.log(number2Clicked)
+//     }
+// })
+// five.addEventListener('click', function () {
+//     display.push('5');
+//     output.textContent = display.join('');
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 5;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 5;
+//         console.log(number2Clicked)
+//     }
+// })
+// six.addEventListener('click', function () {
+//     display.push('6');
+//     output.textContent = display.join('');
+//     number1Clicked = 6;
+// })
+// seven.addEventListener('click', function () {
+//     display.push('7');
+//     output.textContent = display.join('');
+//     displayValue1 = Number(display.join(""));
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 7;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 7;
+//         console.log(number2Clicked)
+//     }
 
-})
-eight.addEventListener('click', function () {
-    display.push('8');
-    display.join('')
-    displayValue1 = Number(display.join(""));
-    output.textContent = display.join('');
-    number1Clicked = 8;
+// })
+// eight.addEventListener('click', function () {
+//     display.push('8');
+//     display.join('')
+//     displayValue1 = Number(display.join(""));
+//     output.textContent = display.join('');
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 8;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 8;
+//         console.log(number2Clicked)
+//     }
 
-})
-nine.addEventListener('click', function () {
-    display.push('9');
-    join = display.join('')
-    displayValue1 = Number(display.join(""));
-    output.textContent = display.join('');
-    number1Clicked = 9;
-})
+// })
+// nine.addEventListener('click', function () {
+//     display.push('9');
+//     join = display.join('')
+//     displayValue1 = Number(display.join(""));
+//     output.textContent = display.join('');
+//     if (isNaN(number1Clicked)) {
+//         number1Clicked = 9;
+//         console.log(number1Clicked)
+//     } else {
+//         number2Clicked = 9;
+//         console.log(number2Clicked)
+//     }
+// })
 
+// Press a button and add it to an Array1, press another button and 
+// add it to the same array.
+// If an operator is pressed, press a button into Array 2 
+
+const screen = document.querySelector("[data-screen]");
+numberButtons.forEach((button) =>
+    button.addEventListener("click", () => appendNumber(button.textContent))
+);
+
+function appendNumber(number) {
+    if (screen.textContent === "0");
+    screen.textContent += number;
+}
 
