@@ -15,40 +15,37 @@
             <div class="container-inner">
                 <div class="calculator">
                     <div class="screen-display">
-                        <output class="output" id="output"></output>
-                        <output>&nbsp;</output>
+                        <div class="screen" data-screen></div>
                     </div>
                     <div class="all-buttons">
-                        <div class="screen" data-screen>0</div>
-
                         <div>
-                            <button id="AC">AC</button>
-                            <button id="+/-">+/-</button>
-                            <button id="%">%</button>
-                            <button id="/">/</button>
+                            <button id="AC" data-operator>AC</button>
+                            <button id="+/-" data-operator>+/-</button>
+                            <button id="%" data-operator>%</button>
+                            <button id="/" data-operator>/</button>
                         </div>
                         <div>
                             <button class="digits" id="seven" value=7 data-number>7</button>
                             <button class="digits" id="eight" value=8 data-number>8</button>
                             <button class="digits" id="nine" value=9 data-number>9</button>
-                            <button id="x">x</button>
+                            <button id="x" data-operator>x</button>
                         </div>
                         <div>
                             <button id="four" value=4 data-number>4</button>
                             <button id="five" value=5 data-number>5</button>
                             <button id="six" value=6 data-number>6</button>
-                            <button id="-">-</button>
+                            <button id="-" data-operator>-</button>
                         </div>
                         <div>
                             <button id="one" value=1 data-number>1</button>
                             <button id="two" value=2 data-number>2</button>
                             <button id="three" value=3 data-number>3</button>
-                            <button id="+">+</button>
+                            <button id="+" data-operator>+</button>
                         </div>
                         <div>
                             <button id="zero" value=0 data-number>0</button>
-                            <button id=".">.</button>
-                            <button id="=">=</button>
+                            <button id="." data-operator>.</button>
+                            <button id="=" data-operator>=</button>
                         </div>
                     </div>
                 </div>
