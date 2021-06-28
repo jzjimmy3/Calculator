@@ -1,6 +1,6 @@
-const plusMinus = document.getElementById('+/-');
-const percent = document.getElementById('%');
-const decimal = document.getElementById('.');
+// const plusMinus = document.getElementById('+/-');
+// const percent = document.getElementById('%');
+// const decimal = document.getElementById('.');
 
 
 let firstOperand = "";
@@ -15,65 +15,88 @@ numberButtons.forEach((button) =>
 
 const screen = document.querySelector("[data-screen]");
 function addToScreen(addValue) {
-    if (screen.textContent === "0");
+    if (screen.textContent === "0" || shouldResetScreen) resetScreen();
     screen.textContent += addValue;
-    firstOperand = screen.textContent
 }
 
 const operatorButtons = document.querySelectorAll("[data-operator]");
 operatorButtons.forEach((button) =>
     button.addEventListener("click", () => setOperator(button.textContent))
 )
-
 function setOperator(operator) {
+    if (currentOperation !== null) evaluate();
+    firstOperand = screen.textContent;
+    currentOperation = operator;
+    shouldResetScreen = true;
     screen.textContent += operator;
 }
 
 const AC = document.getElementById('AC');
 AC.addEventListener('click', () => resetScreen())
 function resetScreen() {
-    screen.textContent = '0';
-    firstOperand = "";
-    secondOperand = "";
+    screen.textContent = "";
+    shouldResetScreen = false;
 }
 
-const equals = document.getElementById('=');
-equals.addEventListener('click', () => evaluate())
+const equals = document.querySelector('[data-equals]');
+equals.addEventListener("click", () => evaluate())
 function evaluate() {
+    if (currentOperation === null || shouldResetScreen) return;
     if (currentOperation === "÷" && screen.textContent === "0") {
         alert("You can't divide by 0!");
         clear();
         return;
     }
     secondOperand = screen.textContent;
-    console.log("The first" + firstOperand)
-    screen.textContent = operate('+', firstOperand, secondOperand);
-    console.log(screen.textContent)
+    screen.textContent = roundResult(
+        operate(currentOperation, firstOperand, secondOperand)
+    );
+    currentOperation = null;
+}
+
+function roundResult(number) {
+    return Math.round(number * 1000) / 1000;
+}
+function clear() {
+    screen.textContent = "0";
+    firstOperand = "";
+    secondOperand = "";
     currentOperation = null;
 }
 
 function add(a, b) {
+    console.log('add')
     return a + b;
 }
+
+function substract(a, b) {
+    console.log('subtract')
+    return a - b;
+}
+
+function multiply(a, b) {
+    console.log('multiply')
+
+    return a * b;
+}
+
 function divide(a, b) {
     return a / b;
 }
-function multiply(a, b) {
-    return a * b;
-}
-function subtract(a, b) {
-    return a - b;
-}
+
 
 function operate(operator, a, b) {
     a = Number(a);
     b = Number(b);
+    console.log("operator" + operator)
+    console.log("a" + a)
+    console.log("b" + b)
     switch (operator) {
         case "+":
             return add(a, b);
-        case "−":
+        case "-":
             return substract(a, b);
-        case "×":
+        case "x":
             return multiply(a, b);
         case "÷":
             if (b === 0) return null;
@@ -82,7 +105,5 @@ function operate(operator, a, b) {
             return null;
     }
 }
-
-
 
 
